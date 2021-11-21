@@ -18,19 +18,18 @@ import (
 	"os"
 	"strings"
 
+	"github.com/palcoin-project/palclog"
 	"google.golang.org/grpc/grpclog"
-
-	"github.com/btcsuite/btclog"
 )
 
 // UseLogger sets the logger to use for the gRPC server.
-func UseLogger(l btclog.Logger) {
+func UseLogger(l palclog.Logger) {
 	grpclog.SetLogger(logger{l}) // nolint:staticcheck
 }
 
-// logger uses a btclog.Logger to implement the grpclog.Logger interface.
+// logger uses a palclog.Logger to implement the grpclog.Logger interface.
 type logger struct {
-	btclog.Logger
+	palclog.Logger
 }
 
 // stripGrpcPrefix removes the package prefix for all logs made to the grpc
