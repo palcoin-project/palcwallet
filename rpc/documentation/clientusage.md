@@ -52,15 +52,15 @@ import (
 	"fmt"
 	"path/filepath"
 
-	pb "github.com/btcsuite/btcwallet/rpc/walletrpc"
+	pb "github.com/palcoin-project/palcwallet/rpc/walletrpc"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	"github.com/btcsuite/btcutil"
+	"github.com/palcoin-project/palcutil"
 )
 
-var certificateFile = filepath.Join(btcutil.AppDataDir("btcwallet", false), "rpc.cert")
+var certificateFile = filepath.Join(palcutil.AppDataDir("btcwallet", false), "rpc.cert")
 
 func main() {
 	creds, err := credentials.NewClientTLSFromFile(certificateFile, "localhost")
@@ -86,7 +86,7 @@ func main() {
 		return
 	}
 
-	fmt.Println("Spendable balance: ", btcutil.Amount(balanceResponse.Spendable))
+	fmt.Println("Spendable balance: ", palcutil.Amount(balanceResponse.Spendable))
 }
 ```
 
